@@ -1,0 +1,154 @@
+import java.sql.SQLOutput;
+import java.util.*;
+class balanceModify {
+    Scanner sc = new Scanner(System.in);
+    int id;
+    int password;
+    double amount = 10000.0;
+    double withdrawalAmount;
+    double depositeAmount;
+    double transferAmount;
+    Long accountNo;
+
+    public void witdrawal() {
+        System.out.println("enter amount :");
+        withdrawalAmount = sc.nextDouble();
+        if (withdrawalAmount > amount) {
+            System.out.println("Cant't do transaction,Balance is Low");
+        } else {
+            System.out.println("withdraw successful!!!");
+            amount = amount - withdrawalAmount;
+        }
+
+
+    }
+
+    class login {
+
+    }
+
+
+    public void login() {
+        System.out.println("Enter login id :");
+        id = sc.nextInt();
+            System.out.println("Enter password");
+            password=sc.nextInt();
+
+
+        if (id == 12345 && password == 8626) {
+
+            System.out.println("1.Check Balance");
+            System.out.println("2.Withdrawal");
+            System.out.println("1.Deposit");
+            System.out.println("1.Transfer");
+            System.out.println("1.Exit");
+
+
+
+        } else {
+            System.out.println("Invalid id or Password");
+            while (id != 12345 && password != 8626){
+                System.out.println("Enter login id :");
+                id = sc.nextInt();
+                    System.out.println("Enter password");
+                    password=sc.nextInt();
+
+                if (id == 12345 && password == 8626) {
+                    System.out.println("Login successfully");
+
+                    System.out.println("1.Check Balance");
+                    System.out.println("2.Withdrawal");
+                    System.out.println("3.Deposit");
+                    System.out.println("5.Transfer");
+                    System.out.println("6.Exit");
+
+                }
+
+            }
+
+
+        }
+
+
+    }
+    void Deposite()
+    {
+        System.out.println("Enter Amount to deposite :");
+        depositeAmount=sc.nextDouble();
+        amount=amount+depositeAmount;
+        System.out.println("Amount deposited  successfully");
+
+
+    }
+    void transfer()
+    {
+        System.out.println("Enter amount to transfer :");
+        transferAmount=sc.nextDouble();
+        System.out.println("Enter Account No :");
+        accountNo=sc.nextLong();
+        amount=amount-transferAmount;
+        System.out.println("Amount transferred successfully");
+
+    }
+}
+
+public class ATM extends balanceModify  {
+    public static void main(String[] args) {
+        ATM b = new ATM();
+        Scanner sc = new Scanner(System.in);
+
+        int ch;
+        b.login();
+
+        do {
+            System.out.println("Enter your choice");
+
+
+            ch = sc.nextInt();
+
+
+            switch (ch) {
+                case 1: {
+                    System.out.println("Account balance : " + b.amount);
+                    break;
+                }
+                case 2: {
+                    b.witdrawal();
+                    break;
+
+                }
+                case 3 :
+                {
+                    b.Deposite();
+                    break;
+
+                }
+                case 4:
+                {
+                    b.transfer();
+                    break;
+
+                }
+                case 5:
+                {
+                    System.out.println("Exiting....................");
+                    break;
+                }
+                default:
+                {
+                    System.out.println("Enter valid choice");
+                }
+
+
+            }
+
+
+
+
+
+        } while (ch != 5);
+    }
+
+}
+
+
